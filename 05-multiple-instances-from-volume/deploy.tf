@@ -1,3 +1,13 @@
+terraform {
+required_version = ">= 0.14.0"
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = "~> 1.35.0"
+    }
+  }
+}
+
 resource "openstack_compute_instance_v2" "Instance" {
   count = var.instance_num
   name = format("%s-%02d", var.instance_name, count.index+1)
